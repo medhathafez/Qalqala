@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tajweed - </title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        :root { --primary: #16a085; } /* Teal Theme */
+        body { font-family: Arial, sans-serif; background-color: #f4f7f6; padding: 20px; color: #333; }
+        .worksheet-container { background: #fff; padding: 40px; max-width: 800px; margin: 0 auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .header { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 3px solid var(--primary); padding-bottom: 10px; margin-bottom: 20px; }
+        h1 { color: var(--primary); font-size: 2.5em; margin: 0; }
+        h2 { color: #555; margin: 0; font-size: 1.5em; }
+        .student-info { font-size: 1.2em; font-weight: bold; margin-bottom: 30px; display: flex; align-items: center; }
+        .student-info input { margin-left: 10px; padding: 8px; font-size: 1em; width: 300px; border: 2px solid #ddd; border-radius: 6px; outline: none; }
+        .student-info input:focus { border-color: var(--primary); }
+        .question { margin-bottom: 25px; }
+        .question p { font-weight: bold; font-size: 1.1em; }
+        
+        .text-input { width: 100%; padding: 10px; font-size: 1em; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; margin-top: 5px; text-align: center; font-family: Arial, sans-serif; resize: none; overflow: hidden; min-height: 40px;}
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { border: 2px solid #000; padding: 12px; text-align: center; }
+        th { background-color: #f9f9f9; font-size: 1.1em; }
+        .arabic { font-family: 'Traditional Arabic', 'Amiri', serif; font-size: 1.8em; direction: rtl; }
+        .arabic-input { font-family: 'Traditional Arabic', 'Amiri', serif; font-size: 1.5em; direction: rtl; width: 80%; padding: 5px; resize: none; overflow: hidden; min-height: 45px;}
+        .input-group { display: flex; align-items: center; justify-content: space-between;}
+        .kbd-btn { cursor: pointer; background: none; border: none; font-size: 1.5em; transition: transform 0.2s; }
+        .kbd-btn:hover { transform: scale(1.1); }
+        .submit-btn { display: block; width: 250px; margin: 40px auto 0; padding: 15px; background-color: var(--primary); color: white; border: none; border-radius: 8px; font-size: 1.2em; font-weight: bold; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.2); }
+        .submit-btn:hover { background-color: #117864; }
+        
+        #virtual-kbd { display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #2c3e50; padding: 15px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); z-index: 1000; width: 95%; max-width: 800px; }
+        .kbd-row { display: flex; justify-content: center; margin-bottom: 8px; flex-wrap: wrap; }
+        .key { padding: 10px 14px; margin: 3px; background: #ecf0f1; border: none; border-radius: 6px; cursor: pointer; font-size: 1.4em; font-family: 'Amiri', serif; font-weight: bold; }
+        .key:active { background: #bdc3c7; }
+        .close-kbd { background: #e74c3c; color: white; border: none; width: 100%; padding: 12px; border-radius: 6px; cursor: pointer; font-size: 1.1em; font-weight: bold; margin-top: 5px; }
+    </style>
+</head>
+<body>
+
+<div class="worksheet-container" id="capture-area">
+    <div class="header">
+        <h1>Qalqalah</h1>
+        <h2></h2>
+    </div>
+    
+    <div class="student-info">
+        <label for="student-name">Your Name:</label>
+        <input type="text" id="student-name" placeholder="Type your name here...">
+    </div>
+
+    <div class="question">
+        <p>1. What is <em>qalqalah</em>?</p>
+        <textarea class="text-input auto-expand" style="text-align: left;" rows="1"></textarea>
+    </div>
+
+    <div class="question">
+        <p>2. What is an acronym that I can use to remember these letters?</p>
+        <textarea class="text-input auto-expand" style="text-align: left;" rows="1"></textarea>
+    </div>
+
+    <div class="question">
+        <p>3. Complete the table, writing <strong>Y</strong> for Qalqalah and <strong>N</strong> if there isn't.</p>
+        <table>
+            <tr>
+                <th>Example</th>
+                <th style="width:10%;">Y/N</th>
+                <th>Example</th>
+                <th style="width:10%;">Y/N</th>
+            </tr>
+            <tr>
+                <td class="arabic">أَحَدٌ</td>
+                <td><textarea class="text-input auto-expand" rows="1"></textarea></td>
+                <td class="arabic">أَقْرَبَ</td>
+                <td><textarea class="text-input auto-expand" rows="1"></textarea></td>
+            </tr>
+            <tr>
+                <td class="arabic">إِسْمٌ</td>
+                <td><textarea class="text-input auto-expand" rows="1"></textarea></td>
+                <td class="arabic">أَفْضَلُ</td>
+                <td><textarea class="text-input auto-expand" rows="1"></textarea></td>
+            </tr>
+            <tr>
+                <td class="arabic">إِعْمَلْ</td>
+                <td><textarea class="text-input auto-expand" rows="1"></textarea></td>
+                <td class="arabic">خَلَقَ</td>
+                <td><textarea class="text-input auto-expand" rows="1"></textarea></td>
+            </tr>
+            <tr>
+                <td class="arabic">بُرُوجٌ</td>
+                <td><textarea class="text-input auto-expand" rows="1"></textarea></td>
+                <td class="arabic">مَلَكٌ</td>
+                <td><textarea class="text-input auto-expand" rows="1"></textarea></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="question">
+        <p>4. Write your own examples from the Quran:</p>
+        <table>
+            <tr>
+                <th style="width: 50%;">Example</th>
+                <th>Surah Number</th>
+                <th>Verse Number</th>
+            </tr>
+            <script>
+                for(let i=0; i<4; i++) {
+                    document.write(`
+                    <tr>
+                        <td>
+                            <div class="input-group">
+                                <textarea class="arabic-input auto-expand" id="ar-input-qalqalah-${i}" rows="1"></textarea>
+                                <button class="kbd-btn" data-html2canvas-ignore="true" onclick="showKeyboard(document.getElementById('ar-input-qalqalah-${i}'))">⌨️</button>
+                            </div>
+                        </td>
+                        <td><textarea class="text-input auto-expand" rows="1"></textarea></td>
+                        <td><textarea class="text-input auto-expand" rows="1"></textarea></td>
+                    </tr>
+                    `);
+                }
+            </script>
+        </table>
+    </div>
+</div>
+
+<button class="submit-btn" onclick="submitWork()" data-html2canvas-ignore="true">Submit Answers</button>
+
+<div id="virtual-kbd" data-html2canvas-ignore="true">
+    <div id="kbd-keys"></div>
+    <button class="close-kbd" onclick="hideKeyboard()">Close Keyboard</button>
+</div>
+
+<script>
+    document.querySelectorAll('.auto-expand').forEach(textarea => {
+        textarea.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+        });
+    });
+
+    const arabicChars = ['أ','إ','ا','آ','ب','ت','ث','ج','ح','خ','د','ذ','ر','ز','س','ش','ص','ض','ط','ظ','ع','غ','ف','ق','ك','ل','م','ن','ه','و','ي','ؤ','ء','ئ','ة','ى','َ','ُ','ِ','ّ','ْ','ً','ٌ','ٍ', ' '];
+    let activeInput = null;
+    const kbdContainer = document.getElementById('kbd-keys');
+    let row = document.createElement('div'); row.className = 'kbd-row';
+    arabicChars.forEach((char, index) => {
+        let btn = document.createElement('button'); btn.className = 'key'; btn.innerText = char === ' ' ? 'Space' : char;
+        btn.onclick = () => {
+            if (activeInput) {
+                let s = activeInput.selectionStart, e = activeInput.selectionEnd;
+                activeInput.value = activeInput.value.substring(0, s) + char + activeInput.value.substring(e);
+                activeInput.selectionStart = activeInput.selectionEnd = s + char.length; activeInput.focus();
+                if(activeInput.tagName.toLowerCase() === 'textarea') {
+                    activeInput.style.height = 'auto';
+                    activeInput.style.height = (activeInput.scrollHeight) + 'px';
+                }
+            }
+        };
+        row.appendChild(btn);
+        if((index + 1) % 12 === 0) { kbdContainer.appendChild(row); row = document.createElement('div'); row.className = 'kbd-row'; }
+    });
+    kbdContainer.appendChild(row);
+
+    function showKeyboard(inputElem) { activeInput = inputElem; document.getElementById('virtual-kbd').style.display = 'block'; }
+    function hideKeyboard() { document.getElementById('virtual-kbd').style.display = 'none'; activeInput = null; }
+
+    function submitWork() {
+        const studentName = document.getElementById('student-name').value || 'Student';
+        html2canvas(document.getElementById('capture-area'), { scale: 2 }).then(canvas => {
+            const link = document.createElement('a');
+            link.download = `${studentName}_Qalqalah_Lesson4.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        });
+    }
+</script>
+</body>
+</html>
